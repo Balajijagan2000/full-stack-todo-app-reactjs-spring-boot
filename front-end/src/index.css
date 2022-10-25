@@ -13,38 +13,71 @@ body {
     sans-serif;
   height: 100vh;
   position: relative;
-  background-color: #fff;
-  backdrop-filter: blur(5px);
+  overflow: hidden;
+  background-color: #CBF1F5;
 
 }
+.dark_mode {
+
+  background-color: hsl(217, 10%, 55%);
+}
+
 
 .add-todo {
-  position: fixed;
+
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  z-index: 50;
+  z-index: 900;
+  /* transition: opacity .3s ease; */
+
+
+ 
+}
+.anim.add-todo {
+  animation-name: fade-in;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-delay: 0.4s;
+  opacity:0;
+}
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+  }
 }
 .todo-container {
   position: relative;
+}
+
+.todos {
+  padding: 1em;
+  height: 70vh;
+  overflow-y:scroll; 
+  scroll-behavior: smooth;
+  transition: all .2s ease;
+
   
 }
-/* .todo-container::before {
-  
-  
-  background-color: rgba(0,0,255,0.4);
-  backdrop-filter: blur(10px);
-  position:absolute;
-  content: '';
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-
-  
+.todos::-webkit-scrollbar {
+  display: none;
+}
+/* .add-circle {
+  transition: transform .3s ease;
 } */
+.add-circle-anim {
+  transition: transform .3s ease;
+  transform: rotate(45deg);
+  
+}
+.todo {
+  transition: all .4s ease;
+}
+.todo-anim {
+  
+  transform: translateX(200%);
 
-
-
-
+  
+}

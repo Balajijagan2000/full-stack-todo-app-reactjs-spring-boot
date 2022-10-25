@@ -73,15 +73,27 @@ function App() {
   //Function to remove todo
   const handleDelete = (todoId) => {
 
-    TodoApi.deleteTodo(todoId)
-    .then((response) => {
+  const curTodo = document.querySelector('#todo-'+todoId) 
+  
+  
+  TodoApi.deleteTodo(todoId)
+  .then((response) => {
 
-          const newTodos = todos.filter( (t) => {
+    if(response.status === 200) {
+
+      curTodo.classList.toggle('todo-anim')
+      setTimeout(() => {
+        const newTodos = todos.filter( (t) => {
           return t.todoId !== response.data.todoId
         })
-
+        
         setTodos([...newTodos])
         filterTodos(newTodos)
+        
+      }, 400);
+      
+    }
+      
 
 
     })
@@ -90,7 +102,14 @@ function App() {
   //Function to toggle the add todo ui
   const toggleAddTodo = () => {
     const addTodoForm = document.querySelector('.add-todo')
+    const todos_constainer = document.querySelector('.todos')
+    const addCircleBtn = document.querySelector('.add-circle')
+
     addTodoForm.classList.toggle('hidden')
+    addTodoForm.classList.toggle('anim')
+    addCircleBtn.classList.toggle('add-circle-anim')
+    todos_constainer.classList.toggle('blur')
+
  }
 
  //Function to toggle check
@@ -193,9 +212,10 @@ const handleFilter = (e) => {
 
 
         <div className="flex container w-2/3 mx-2 my-3 items-center justify-between">
-              <IoIosAddCircle className="w-11 h-11 text-blue-800 z-50" onClick={toggleAddTodo} />
+              <IoIosAddCircle className="add-circle w-11 h-11 text-blue-800 text-primaryDark z-50 transition-all" onClick={toggleAddTodo} />
               <select name="filter" onChange={handleFilter}
-                className="w-100 px-3 bg-primary  text-light font-md rounded focus:outline-none                        ">
+                className="w-100 px-3 bg-primary  text-textDark text-xl rounded 
+                focus:outline-none dark:bg-dark_primary text-textLight">
                 <option value="0">All</option>
                 <option value="1">Completed</option>
                 <option value="2">Pending</option>

@@ -8,11 +8,12 @@ function AddTodo({handleChange,handleSubmit,todo}) {
 
 
   return (
-    <div className="add-todo hidden p-5 bg-primary rounded rounded-md shadow-xl">
+    <div className="add-todo hidden p-5 bg-primary rounded rounded-md shadow-2xl
+    dark:bg-dark_primary">
 
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                        <label className="task text-slate-600 font-bold">
+                        <label className="task text-textDark font-bold">
                             Task
                         </label>
                         <br />
@@ -28,7 +29,7 @@ function AddTodo({handleChange,handleSubmit,todo}) {
                 <div className="form-group">
                     <input type="submit" 
                         value="Add"
-                        className="bg-blue-800 px-4 py-1 text-slate-300 font-bold rounded rounded-md
+                        className="bg-primaryDark px-4 py-1 text-slate-300 font-bold rounded rounded-md
                         cursor-pointer"
                     />
                 </div>

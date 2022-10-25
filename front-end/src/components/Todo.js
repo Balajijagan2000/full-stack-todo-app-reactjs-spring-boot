@@ -3,14 +3,16 @@ import {TiTick} from 'react-icons/ti'
 import {BsTrashFill} from 'react-icons/bs'
 
 function Todo({todo,handleDelete,handleCheck}) {
-  let textClass = 'text-2xl font-bold text-slate-600 '
-  let trashBtnClass = 'w-5 h-5 text-blue-800 text-4xl cursor-pointer'
+  const todoId = `todo-${todo.todoId}`
+  let textClass = 'text-2xl font-bold text-textDark  dark:text-dark_light transition-all '
+  let trashBtnClass = 'w-5 h-5 text-primaryDark text-4xl cursor-pointer'
   textClass = todo.completed ? textClass+'line-through' : textClass
   
   
   
   return (
-    <div className="todo bg-secondary p-3  min-w-full  rounded rounded-md  border-gray-500 shadow-xl">
+    <div className="todo bg-secondary dark:bg-dark_secondary p-3   min-w-full  rounded rounded-md  border-gray-500 shadow-xl"
+      id={todoId}>
         <div className="task-container flex 
           items-center justify-evenly gap-3">
 
@@ -27,14 +29,14 @@ function Todo({todo,handleDelete,handleCheck}) {
                   <h3 className={textClass}>
                       {todo.task}
                     </h3>
-                  <p className="text-light font-bold">{todo.createdAt}</p>
+                  <p className="text-textLight font-bold">{todo.createdAt}</p>
                 </div>
                 <div>
                   
                   
                   <BsTrashFill 
                     className={trashBtnClass}  
-                    onClick={() => handleDelete(todo.todoId)}
+                    onClick={(e) => handleDelete(todo.todoId)}
                   
                   />
                  
@@ -45,6 +47,16 @@ function Todo({todo,handleDelete,handleCheck}) {
 
             
         </div>
+
+
+
+
+
+
+
+
+
+
 
 
     </div>

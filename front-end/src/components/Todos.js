@@ -2,7 +2,7 @@ import React from 'react'
 import Todo from './Todo'
 function Todos({todos,handleDelete,handleCheck}) {
   return (
-    <div className="todos w-2/3 max-w-md space-y-4 ">
+    <div className="todos  w-2/3 max-w-md space-y-4 h-100 ">
         
 
         {
